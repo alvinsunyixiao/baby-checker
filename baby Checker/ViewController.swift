@@ -11,17 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var myView: UIImageView!
-    var myTrans: transmitter = transmitter(host: "127.0.0.1", port: 11112)
+    var myTrans: transmitter = transmitter(host: "192.168.0.120", port: 13500)
     
     @IBAction func learning(sender: UIButton) {
     }
     
     @IBAction func getpic(sender: UIButton) {
         myTrans.sendCmd("getpicture")
-        let raw_data = myTrans.readAll()
-        let nsdata = NSData(bytes: raw_data, length: raw_data.count)
-        let myImg = UIImage(data: nsdata)
-        myView.image = myImg
+        if let raw_data = myTrans.readAll() {
+            let nsdata = NSData(bytes: raw_data, length: raw_data.count)
+            let myImg = UIImage(data: nsdata)
+            myView.image = myImg
+        }
     }
     
     override func viewDidLoad() {

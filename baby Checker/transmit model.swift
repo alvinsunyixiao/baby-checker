@@ -29,18 +29,22 @@ class transmitter {
         self.writeStream = out!.takeRetainedValue()
     }
     
-    func readAll() -> [UInt8] {
+    func readAll() -> [UInt8]? {
         var res = [UInt8]()
-        var buf = [UInt8](count: 256, repeatedValue:0)
-        var readCount: CFIndex = 256
+        let buffsize: CFIndex = 8
+        var buf = [UInt8](count: buffsize, repeatedValue:0)
+        var readCount: CFIndex = buffsize
         var totalCount: CFIndex = 0
         createSocketObj()
         CFReadStreamOpen(readStream)
         repeat {
-            readCount = CFReadStreamRead(readStream, &buf, 256)
+            readCount = CFReadStreamRead(readStream, &buf, buffsize)
             res += buf
             totalCount += readCount
-        } while readCount==256
+        } while readCount == buffsize
+        if totalCount == 0 {
+            return nil
+        }
         res = Array(res[0...totalCount-1])
         CFReadStreamClose(readStream)
         return res
