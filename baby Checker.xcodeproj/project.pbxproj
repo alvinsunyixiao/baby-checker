@@ -13,6 +13,7 @@
 		A8B1EAAB1CBDD6C400505759 /* baby_Checker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8B1EAA91CBDD6C400505759 /* baby_Checker.xcdatamodeld */; };
 		A8B1EAAD1CBDD6C400505759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8B1EAAC1CBDD6C400505759 /* Assets.xcassets */; };
 		A8B1EAB01CBDD6C400505759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8B1EAAE1CBDD6C400505759 /* LaunchScreen.storyboard */; };
+		A8B1EAB81CBDD90100505759 /* transmit model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1EAB71CBDD90100505759 /* transmit model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A8B1EAAC1CBDD6C400505759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8B1EAAF1CBDD6C400505759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8B1EAB11CBDD6C400505759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8B1EAB71CBDD90100505759 /* transmit model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transmit model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A8B1EAA21CBDD6C400505759 /* AppDelegate.swift */,
 				A8B1EAA41CBDD6C400505759 /* ViewController.swift */,
 				A8B1EAA61CBDD6C400505759 /* Main.storyboard */,
+				A8B1EAB71CBDD90100505759 /* transmit model.swift */,
 				A8B1EAAC1CBDD6C400505759 /* Assets.xcassets */,
 				A8B1EAAE1CBDD6C400505759 /* LaunchScreen.storyboard */,
 				A8B1EAB11CBDD6C400505759 /* Info.plist */,
@@ -141,6 +144,7 @@
 			files = (
 				A8B1EAAB1CBDD6C400505759 /* baby_Checker.xcdatamodeld in Sources */,
 				A8B1EAA51CBDD6C400505759 /* ViewController.swift in Sources */,
+				A8B1EAB81CBDD90100505759 /* transmit model.swift in Sources */,
 				A8B1EAA31CBDD6C400505759 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
