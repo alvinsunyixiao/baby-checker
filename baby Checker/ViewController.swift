@@ -15,7 +15,10 @@ class ViewController: UIViewController {
     var myTrans: transmitter = transmitter(host: "127.0.0.1", port: 13500)
     
     @IBAction func classify(sender: UIButton) {
-        let label = sender.tag
+        let label = String(sender.tag)
+        let cmds = ["classify",label]
+        let ack = myTrans.requireDataWithCommand(cmds)
+        print(ack)
     }
     
     @IBAction func getpic(sender: UIButton) {
