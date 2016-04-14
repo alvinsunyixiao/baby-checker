@@ -24,16 +24,23 @@
                                     <action selector="getpic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="96b-bU-eYx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hc-zw-0dl">
-                                <rect key="frame" x="207" y="380" width="52" height="30"/>
-                                <state key="normal" title="classify"/>
-                                <connections>
-                                    <action selector="learning:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbX-Bl-Wg2"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48V-KB-yuh">
                                 <rect key="frame" x="50" y="100" width="240" height="128"/>
                             </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrL-Eh-p0q">
+                                <rect key="frame" x="222" y="380" width="30" height="30"/>
+                                <state key="normal" title="yes"/>
+                                <connections>
+                                    <action selector="classify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RS8-1h-paN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hc-zw-0dl">
+                                <rect key="frame" x="222" y="429" width="30" height="30"/>
+                                <state key="normal" title="no"/>
+                                <connections>
+                                    <action selector="classify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sy3-CH-s5y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

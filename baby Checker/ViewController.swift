@@ -11,18 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var myView: UIImageView!
-    var myTrans: transmitter = transmitter(host: "192.168.0.120", port: 13500)
+    var gettingPic = false
+    var myTrans: transmitter = transmitter(host: "127.0.0.1", port: 13500)
     
-    @IBAction func learning(sender: UIButton) {
+    @IBAction func classify(sender: UIButton) {
+        let label = sender.tag
     }
     
     @IBAction func getpic(sender: UIButton) {
-        myTrans.sendCmd("getpicture")
-        if let raw_data = myTrans.readAll() {
-            let nsdata = NSData(bytes: raw_data, length: raw_data.count)
-            let myImg = UIImage(data: nsdata)
-            myView.image = myImg
+        if gettingPic {
+            return
         }
+        gettingPic = true
+        let raw_data = myTrans.requireDataWithCommand(["getpic"])
+        let nsdata = NSData(bytes: raw_data, length: raw_data.count)
+        let myImg = UIImage(data: nsdata)
+        myView.image = myImg
+        gettingPic = false
     }
     
     override func viewDidLoad() {
@@ -32,11 +37,7 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        let raw_data = myTrans.readAll()
-//        let nsdata = NSData(bytes: raw_data, length: raw_data.count)
-//        let myImg = UIImage(data: nsdata)
-//        myView.image = myImg
-        myTrans.sendCmd("hihihi")
+        
     }
     
     override func didReceiveMemoryWarning() {

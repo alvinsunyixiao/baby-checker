@@ -52,9 +52,57 @@ class transmitter {
     
     func sendCmd(cmd: String) {
         createSocketObj()
+        //var buf = [UInt8](count: 10, repeatedValue: 0)
         CFWriteStreamOpen(writeStream)
+        //CFReadStreamOpen(readStream)
         CFWriteStreamWrite(writeStream, cmd, CFIndex(strlen(cmd)))
         CFWriteStreamClose(writeStream)
+//        if CFReadStreamHasBytesAvailable(readStream) {
+//            CFReadStreamRead(readStream, &buf, buf.count)
+//            CFReadStreamClose(readStream)
+//            return buf
+//        }
+//        else {
+//            CFReadStreamClose(readStream)
+//            return nil
+//        }
+    }
+    
+    func createCommandWithArray(cmds:[String]) -> String {
+        var out = ""
+        for cmd in cmds {
+            out += cmd + "*"
+        }
+        out.removeAtIndex(out.endIndex.predecessor())
+        return out
+    }
+    
+    func requireDataWithCommand(cmds: [String]) -> [UInt8] {
+        let cmd = createCommandWithArray(cmds)
+        createSocketObj()
+        CFReadStreamOpen(readStream)
+        CFWriteStreamOpen(writeStream)
+        let buffsize: CFIndex = 4
+        var readCount = buffsize
+        var totalCount = 0
+        var res = [UInt8]()
+        var buf = [UInt8](count: buffsize, repeatedValue: 0)
+        CFWriteStreamWrite(writeStream, cmd, CFIndex(strlen(cmd)))
+        while !CFReadStreamHasBytesAvailable(readStream) {
+            
+        }
+        repeat {
+            readCount = CFReadStreamRead(readStream, &buf, buffsize)
+            res += buf
+            totalCount += readCount
+        } while readCount == buffsize
+        res = Array(res[0...totalCount-1])
+        
+        CFReadStreamClose(readStream)
+        CFWriteStreamClose(writeStream)
+        
+        return res
+        
     }
     
 }
