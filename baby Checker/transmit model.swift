@@ -29,44 +29,6 @@ class transmitter {
         self.writeStream = out!.takeRetainedValue()
     }
     
-    func readAll() -> [UInt8]? {
-        var res = [UInt8]()
-        let buffsize: CFIndex = 8
-        var buf = [UInt8](count: buffsize, repeatedValue:0)
-        var readCount: CFIndex = buffsize
-        var totalCount: CFIndex = 0
-        createSocketObj()
-        CFReadStreamOpen(readStream)
-        repeat {
-            readCount = CFReadStreamRead(readStream, &buf, buffsize)
-            res += buf
-            totalCount += readCount
-        } while readCount == buffsize
-        if totalCount == 0 {
-            return nil
-        }
-        res = Array(res[0...totalCount-1])
-        CFReadStreamClose(readStream)
-        return res
-    }
-    
-    func sendCmd(cmd: String) {
-        createSocketObj()
-        //var buf = [UInt8](count: 10, repeatedValue: 0)
-        CFWriteStreamOpen(writeStream)
-        //CFReadStreamOpen(readStream)
-        CFWriteStreamWrite(writeStream, cmd, CFIndex(strlen(cmd)))
-        CFWriteStreamClose(writeStream)
-//        if CFReadStreamHasBytesAvailable(readStream) {
-//            CFReadStreamRead(readStream, &buf, buf.count)
-//            CFReadStreamClose(readStream)
-//            return buf
-//        }
-//        else {
-//            CFReadStreamClose(readStream)
-//            return nil
-//        }
-    }
     
     func createCommandWithArray(cmds:[String]) -> String {
         var out = ""
